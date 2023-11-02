@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dino Game</title>
+</head>
+<style>
+  /*
+  Units
+  px - pixels on the screen
+  % - percentage of the parent
+  vw - view width; screen width
+  vh - view height; screen height
+
+  */
+
+  /*Style for elements names body*/
+   body {
+    background-color: aquamarine;
+
+    /*Remove gap at top and left-*/
+    margin: 0;
+
+    /*Remove Scroll Bars-*/
+    overflow-x: hidden;
+    overflow-y: hidden;
+   }
+
+   /*Style for elements of id "canvas"*/
+   #canvas {
+    background-color: white;
+   }
+</style>
+<body>
+  <canvas class="canvas" id="canvas">Your Browser Doesn't Support Canvas</canvas>
+</body>
+<script>
+  /* two ways to make a variable
+
+  var - changeable throughout code
+  exmaple: create and change
+  var x = 10;
+  x = 5;
+
+  const - constant, cannot change
+  example:
+  const x = 10;
+
+  NOTE: x=5; wont work because a const cannot change
+
+
+  More code to know / usefull code:
+
+  clear the screen
+  ctx.clearRect(0, 0, width, height);
+
+  draw rectangular lines
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 5;
+  ctx.strokeRect(x, y, width, height);
+
+  draw full rectangles
+  ctx.fillStyle = "#878787";
+  ctx.fillRect(x, y, width, height);
+
+  log to inspect console - view by pressing f12 in browser then console
+  console.log('helloworld');
+
+  */
+
+
+  // find the canvas
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  // fill the screen
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+
+  //put width and height into variables
+  const width = canvas.width;
+  const height = canvas.height;
+
+
+
+  // player stats
+  var playerY = height-500;
+  var velocityY = 0;
+  var playerOnGround = false;
+  const gravity = 0.5;
+
+  //runs every time the screen updates
+  function update() {
+    // update
+    requestAnimationFrame(update);
+
+    // if not touching ground
+    if (playerY + velocityY < height-250) {
+      velocityY += gravity;
+      playerOnGround = false;
+    }
+    // if touching ground
+    else {
+      velocityY = 0;
+      playerOnGround = true;
+    }
+
+    playerY += velocityY;
+
+    //draws the screen
+    draw();
+  }
+
+  // call this function to refresh screen
+  function draw(){
+    //clear screen
+    ctx.clearRect(0, 0, width, height);
+
+    //draw land
+    ctx.fillStyle = "#878787";
+    ctx.fillRect(0, height-200, width, 200);
+
+    //draw player
+    ctx.fillStyle = "#AA00FF";
+    ctx.fillRect(50, playerY, 50, 100);
+
+    //draw obstacle
+    ctx.fillStyle = "#009143";
+    ctx.fillRect(500, height-250, 100, 100);
+  }
+
+
+  //update the screen
+  update();
+
+  // listen for keydown events
+  addEventListener('keydown', (event) => {
+    // if spacebar or up arrow is pressed and is on the ground
+    if(event.code == 'Space' || event.code == 'ArrowUp' && playerOnGround) {
+      // keep in mind velocity is - because the top left is 0, 0
+      velocityY -= 15;
+    }
+  });
+
+  // listen for keyup events
+  addEventListener('keyup', (event) => {
+    // if spacebar or up arrow is released
+    if(event.code == 'Space' || event.code == 'ArrowUp') {
+      velocityY = 0;
+    }
+  });
+</script>
+</html>
