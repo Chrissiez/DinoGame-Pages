@@ -1,16 +1,14 @@
----
 toc: true
 comments: false
 layout: post
-title: Daily Plan Sample
-description: Example Blog!!!  This shows planning and notes from hacks.
+title: Quick Write Up Plan
+description: Arushi and Chrissie began coding the dinosaur game as a side project to Chrissie's cookies so they can showcase their coding skills.
 type: plans
 courses: { compsci: {week: 0} }
 ---
 
-### PBL Unit 1 / Week 0
-Learning outcome.  Installing Tools and showing usage of VSCode.
-- Wednesday - Pick pair share partner, Pick crossover pair, Establish team of four.  Spend some time talking and getting to know each other, particularly with Computer Science experience and goals.  You should be matched with someone that has similar experience.
-- Thursday - Setup Tools on laptop and/or Cloud Computer.
-- Friday - Review and test as a Pair. Spend 25 minutes at one keyboard then switch for next 25 minutes.
-
+### Plan
+- Thursday, October 26 decision to start code
+- Friday, October 27 create shared repository
+- Monday, October 30th begin idea to code dinosaur game
+- Tuesday, October 31st and Wednesday, November 1st beginning code and clean github file
