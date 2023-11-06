@@ -310,9 +310,9 @@
     /**
     * Create the touch controller. A div that covers whole screen.
     */
-    createTouchController: function() {
+    touchControllerCreate: function() {
     this.touchController = document.createElement('div');
-    this.touchController.className = Runner.classes.TOUCH_CONTROLLER;
+    this.touchControllerCreate.className = Runner.classes.TOUCH_CONTROLLER;
     },
     /**
     * Debounce the resize event.
@@ -383,6 +383,8 @@
     this.started = true;
     } else if (this.crashed) {
     this.restart();
+    this.runningTime = 0
+    this.tRex = false
     }
     },
     /**
